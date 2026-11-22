@@ -7373,7 +7373,7 @@ def _html_attack_paths(rep):
                              f'<span class="muted">gives the attacker: {_e(CAP_TEXT.get(s["cap"], s["cap"]))}{_e(ev)}</span></li>')
             else:
                 items.append(f'<li class="gain">⇒ {_e(s["desc"])}</li>')
-        out.append(f'<div class="path"><div class="f-head">{_badge(f"Risk {p["risk"]}/10", "#b71c1c")}'
+        out.append(f'<div class="path"><div class="f-head">{_badge("Risk " + str(p["risk"]) + "/10", "#b71c1c")}'
                    f'<h4>Path {n}: reaching {_e(p["goal_name"])}</h4><span class="rid">likelihood {p["likelihood"]:.0%} · '
                    f'impact {p["impact"]}/10</span></div><ol>{"".join(items)}</ol></div>')
     out.append('<p class="muted">Likelihood combines how firmly each finding was verified with how reliably the steps '
