@@ -2,6 +2,9 @@
 
 **Autonomous-Threat Defense Platform — v5.0.0**
 
+[![CI](https://github.com/MuneneGeo/project-omega/actions/workflows/ci.yml/badge.svg)](https://github.com/MuneneGeo/project-omega/actions/workflows/ci.yml) ![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue) ![License: MIT](https://img.shields.io/badge/license-MIT-green) ![Dependencies: none](https://img.shields.io/badge/dependencies-none-brightgreen)
+
+
 AI agents are making attacks cheaper, faster and more adaptive. A human tries a payload, thinks, and tries another; an agent does that hundreds of times, learns from every error message, and moves within hours of a vulnerability being published.
 
 PROJECT OMEGA is built to **understand and counter autonomous attackers**. It shows you:
@@ -132,80 +135,87 @@ Mapped to the **OWASP Top 10 for LLM Applications (2025)**:
 - **Python 3.8+** (developed and tested on 3.12)
 - **No third-party packages.** Standard library only.
 - **Network access is optional.** It is only needed for `intel update`, `--osv`, `--epss` and the AI analyst.
+- **Git** (optional): only needed if you want to clone instead of downloading a ZIP.
 
-Option A: Clone with Git (recommended)
+### Option A: Clone with Git (recommended)
 
-Linux (Debian/Ubuntu/Kali)
-
+**Linux (Debian/Ubuntu/Kali)**
+```bash
 sudo apt update && sudo apt install -y git python3
 git clone https://github.com/MuneneGeo/project-omega.git
 cd project-omega
 python3 project_omega.py selftest
+```
 
-macOS
-
+**macOS**
+```bash
 brew install git python        # or install Xcode command line tools: xcode-select --install
 git clone https://github.com/MuneneGeo/project-omega.git
 cd project-omega
 python3 project_omega.py selftest
+```
 
-Windows (PowerShell or Command Prompt)
+**Windows (PowerShell or Command Prompt)**
 
-	1.	Install Git for Windows and Python. Tick "Add Python to PATH" in the installer.
-	2.	Open PowerShell and run:
-
+1. Install [Git for Windows](https://git-scm.com/download/win) and [Python](https://www.python.org/downloads/). Tick **"Add Python to PATH"** in the installer.
+2. Open PowerShell and run:
+```powershell
 git clone https://github.com/MuneneGeo/project-omega.git
 cd project-omega
 python project_omega.py selftest
+```
+On Windows use `python` (or `py`) instead of `python3`. For the best experience, run Omega inside **WSL** (Ubuntu), where all commands in this README work exactly as written.
 
-On Windows use python (or py) instead of python3. For the best experience, run Omega inside WSL (Ubuntu), where all commands in this README work exactly as written.
+### Option B: Download without Git
 
-Option B: Download without Git
-
-	1.	Open the repository page on GitHub.
-	2.	Click the green Code button, then Download ZIP.
-	3.	Unzip it, open a terminal in the extracted folder, and run python3 project_omega.py selftest (python on Windows).
+1. Open the repository page on GitHub.
+2. Click the green **Code** button, then **Download ZIP**.
+3. Unzip it, open a terminal in the extracted folder, and run `python3 project_omega.py selftest` (`python` on Windows).
 
 Or from a terminal:
-
+```bash
 curl -L -o omega.zip https://github.com/MuneneGeo/project-omega/archive/refs/heads/main.zip
 unzip omega.zip && cd project-omega-main
+```
+(Windows PowerShell: `Invoke-WebRequest -Uri https://github.com/MuneneGeo/project-omega/archive/refs/heads/main.zip -OutFile omega.zip` then `Expand-Archive omega.zip .`)
 
-(Windows PowerShell: Invoke-WebRequest -Uri https://github.com/MuneneGeo/project-omega/archive/refs/heads/main.zip -OutFile omega.zip then Expand-Archive omega.zip .)
-
-Option C: Download just the one file
+### Option C: Download just the one file
 
 Omega is a single file, so this also works:
-
+```bash
 curl -O https://raw.githubusercontent.com/MuneneGeo/project-omega/main/project_omega.py
 python3 project_omega.py selftest
+```
 
-Verify it works
+### Verify it works
 
-selftest should end with:
-
+`selftest` should end with:
+```
 Result: ALL PASSED
+```
 
-Update to the latest version
-
+### Update to the latest version
+```bash
 cd project-omega
 git pull
+```
 
-Optional: run it from anywhere (Linux/macOS)
-
+### Optional: run it from anywhere (Linux/macOS)
+```bash
 chmod +x project_omega.py
 sudo ln -s "$PWD/project_omega.py" /usr/local/bin/omega
 omega selftest
+```
 
-Optional: use a virtual environment
-
+### Optional: use a virtual environment
 Not required (there are no dependencies), but it keeps optional extras such as Playwright (screenshots) separate:
-
+```bash
 python3 -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install playwright && playwright install chromium
+```
 
-Note: the examples in the rest of this README use python3. On Windows, replace it with python.
+> **Note:** the examples in the rest of this README use `python3`. On Windows, replace it with `python`.
 
 ---
 
@@ -1485,4 +1495,4 @@ The scan report now also includes these sections:
 
 Version 5.0.0. Built as a learning and defensive toolkit. It is tested with the built-in self-tests, a purpose-built vulnerable app and DSVW, but it has **not** been battle-tested on large production traffic. Test in staging first and roll out in monitor mode.
 
-Add a license of your choice before distributing.
+Released under the [MIT License](LICENSE). See [SECURITY.md](SECURITY.md) to report vulnerabilities and [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
