@@ -133,11 +133,79 @@ Mapped to the **OWASP Top 10 for LLM Applications (2025)**:
 - **No third-party packages.** Standard library only.
 - **Network access is optional.** It is only needed for `intel update`, `--osv`, `--epss` and the AI analyst.
 
-```bash
-curl -O <your-copy>/project_omega.py     # or copy the file onto the server
+Option A: Clone with Git (recommended)
+
+Linux (Debian/Ubuntu/Kali)
+
+sudo apt update && sudo apt install -y git python3
+git clone https://github.com/MuneneGeo/project-omega.git
+cd project-omega
+python3 project_omega.py selftest
+
+macOS
+
+brew install git python        # or install Xcode command line tools: xcode-select --install
+git clone https://github.com/MuneneGeo/project-omega.git
+cd project-omega
+python3 project_omega.py selftest
+
+Windows (PowerShell or Command Prompt)
+
+	1.	Install Git for Windows and Python. Tick "Add Python to PATH" in the installer.
+	2.	Open PowerShell and run:
+
+git clone https://github.com/MuneneGeo/project-omega.git
+cd project-omega
+python project_omega.py selftest
+
+On Windows use python (or py) instead of python3. For the best experience, run Omega inside WSL (Ubuntu), where all commands in this README work exactly as written.
+
+Option B: Download without Git
+
+	1.	Open the repository page on GitHub.
+	2.	Click the green Code button, then Download ZIP.
+	3.	Unzip it, open a terminal in the extracted folder, and run python3 project_omega.py selftest (python on Windows).
+
+Or from a terminal:
+
+curl -L -o omega.zip https://github.com/MuneneGeo/project-omega/archive/refs/heads/main.zip
+unzip omega.zip && cd project-omega-main
+
+(Windows PowerShell: Invoke-WebRequest -Uri https://github.com/MuneneGeo/project-omega/archive/refs/heads/main.zip -OutFile omega.zip then Expand-Archive omega.zip .)
+
+Option C: Download just the one file
+
+Omega is a single file, so this also works:
+
+curl -O https://raw.githubusercontent.com/MuneneGeo/project-omega/main/project_omega.py
+python3 project_omega.py selftest
+
+Verify it works
+
+selftest should end with:
+
+Result: ALL PASSED
+
+Update to the latest version
+
+cd project-omega
+git pull
+
+Optional: run it from anywhere (Linux/macOS)
+
 chmod +x project_omega.py
-python3 project_omega.py selftest        # should end with "Result: ALL PASSED"
-```
+sudo ln -s "$PWD/project_omega.py" /usr/local/bin/omega
+omega selftest
+
+Optional: use a virtual environment
+
+Not required (there are no dependencies), but it keeps optional extras such as Playwright (screenshots) separate:
+
+python3 -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install playwright && playwright install chromium
+
+Note: the examples in the rest of this README use python3. On Windows, replace it with python.
 
 ---
 
