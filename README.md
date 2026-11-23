@@ -45,7 +45,7 @@ python3 project_omega.py selftest
 
 ---
 ## See it in action
-### 1 omega detecting live attacks(guard terminal)
+### 1. omega detecting live attacks(guard terminal)
 <img width="1173" height="477" alt="omega" src="https://github.com/user-attachments/assets/bdbc920c-2fed-477c-be1f-ddf4e0a933da" />
 
 
